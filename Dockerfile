@@ -12,14 +12,19 @@ RUN rpm-ostree install NetworkManager-openvpn \
     rh-vpn-profiles.rpm
 
 # Codecs for firefox
-RUN rpm-ostree install \
-    https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-    https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-RUN rpm-ostree override remove gstreamer1-plugins-bad-free
-RUN rpm-ostree install \
-    gstreamer1-plugins-bad-freeworld \
-    gstreamer1-plugins-good \
-    gstreamer1-plugins-ugly \
-    gstreamer1-libav \
-    lame-libs
+# RUN rpm-ostree install \
+#     https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+#     https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+# RUN rpm-ostree override remove gstreamer1-plugins-bad-free
+# RUN rpm-ostree install \
+#     gstreamer1-plugins-bad-freeworld \
+#     gstreamer1-plugins-good \
+#     gstreamer1-plugins-ugly \
+#     gstreamer1-libav \
+#     lame-libs
+
+# Obsidian
+RUN rpm-ostree install flatpak
+RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
+    flatpak install -y flathub md.obsidian.Obsidian
 
