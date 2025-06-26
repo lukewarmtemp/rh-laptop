@@ -28,8 +28,5 @@ RUN rpm-ostree install flatpak
 RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && \
     flatpak install -y flathub md.obsidian.Obsidian
 
-# Red Hat Certificat
-RUN curl --insecure --output /etc/pki/ca-trust/source/anchors/2022-IT-Root-CA.pem https://certs.corp.redhat.com/certs/2022-IT-Root-CA.pem 
-RUN update-ca-trust extract
 
 
